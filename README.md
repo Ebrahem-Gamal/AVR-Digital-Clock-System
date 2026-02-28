@@ -1,5 +1,8 @@
 # Real-Time Digital Clock Controller (ATmega32)
 
+![Animation Preview](Animation.gif)
+*Animated preview of the working digital clock system.*
+
 ## Project Overview
 This project features a fully functional Digital Clock system designed using an AVR Microcontroller (ATmega32). The system maintains an accurate 24-hour time format (HH:MM:SS) and outputs the data to an LCD display (LM016L). It combines precise firmware timing with a professional hardware simulation in Proteus.
 
