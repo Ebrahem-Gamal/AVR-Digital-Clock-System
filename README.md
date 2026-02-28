@@ -14,36 +14,40 @@ This project features a fully functional Digital Clock system designed using an 
 * **Software/Firmware**: C Language (main.c).
 * **Simulation Tool**: Proteus Design Suite.
 
-## Logic Flowchart & System Operations
-The system logic is divided into three main stages to ensure stable performance:
+## Logic Flowchart
+The following flowchart represents the operational logic of the system, including initialization, time incrementing, and display refreshing.
 
-### 1. Initialization Phase
-* **I/O Configuration**: Sets Port B and Port D as output ports for the LCD interface.
-* **LCD Setup**: Configures the LM016L screen, clears the buffer, and sets the starting cursor position.
-* **Time Variables**: Initializes variables for Seconds (SS), Minutes (MM), and Hours (HH).
+![System Flowchart](flowchart.png)
 
-### 2. The Main Processing Loop
-The clock operates on a continuous cycle:
-* **Time Increment**: The system waits for a 1-second trigger (Interrupt or Delay) then increments the `Seconds` count.
-* **Carry-over Logic**:
-    * If `SS == 60`: Reset `SS` to 0 and increment `MM`.
-    * If `MM == 60`: Reset `MM` to 0 and increment `HH`.
-    * If `HH == 24`: Reset all values to `00:00:00`.
-* **User Input**: Checks for button presses to manually reset or adjust the time.
+### Detailed Logic Explanation
+The system follows a structured execution path to ensure real-time accuracy:
 
-### 3. Display Update
-* The current time values are converted from integers to ASCII format.
-* The LCD is updated with the formatted string (HH:MM:SS) every second to reflect the new time.
+1. **Initialization Phase**:
+   * **I/O Ports**: Configures Port B and Port D as outputs for the LCD data and control lines.
+   * **LCD Setup**: Initializes the LM016L screen in 16x2 mode and clears the display.
+   * **Variables**: Sets the initial time values.
+
+2. **The Main Loop (Infinite)**:
+   * **Time Tracking**: The system monitors for a 1-second trigger (via Timer or Delay).
+   * **Increment Logic**: 
+     * Seconds increment by 1.
+     * If `Seconds == 60`, they reset to 0 and `Minutes` increment by 1.
+     * If `Minutes == 60`, they reset to 0 and `Hours` increment by 1.
+     * If `Hours == 24`, the clock resets to 00:00:00.
+
+3. **Display Update**:
+   * The microcontroller converts time values to ASCII and updates the LCD display with the formatted `HH:MM:SS` string.
 
 ## Project Structure
 * **main.c**: The core C source code containing the timing logic.
 * **digital_clock.pdsprj**: The Proteus simulation file for hardware verification.
-* **Clock_report.pdf**: Detailed technical documentation and circuit analysis.
-* **Flowchart.png**: Visual representation of the system logic.
+* **Clock_report[1].pdf**: Detailed technical documentation.
+* **flowchart.png**: Visual logic flowchart of the firmware.
+* **Animation.gif**: Animated preview of the working system.
 
 ## How to Run
 1. **Simulation**: Open `digital_clock.pdsprj` in Proteus and click the 'Play' button.
 2. **Firmware**:
    * Open `main.c` in an AVR compiler (e.g., Microchip Studio).
    * Compile the code to generate the `.hex` file.
-   * Load the `.hex` file into the ATmega32 component within the Proteus environment.
+   * Load the `.hex` file into the ATmega32 component within Proteus.
