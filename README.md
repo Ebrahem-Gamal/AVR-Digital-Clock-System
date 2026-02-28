@@ -1,5 +1,8 @@
 # Real-Time Digital Clock Controller (ATmega32)
 
+![Digital Clock Operation](Animation.gif)
+*Real-time simulation of the clock cycles as seen in Proteus.*
+
 ## Project Overview
 This project features a fully functional Digital Clock system designed using an AVR Microcontroller (ATmega32). The system maintains an accurate 24-hour time format (HH:MM:SS) and outputs the data to a display interface. It combines precise firmware timing with a professional hardware simulation in Proteus.
 
@@ -16,23 +19,18 @@ This project features a fully functional Digital Clock system designed using an 
 * **Documentation**: Technical Report (PDF) and Logic Flowchart.
 
 ## Logic Flowchart
-
-
 The system operates on a continuous loop:
 1. **Initialize**: Set Ports and Timer values.
 2. **Interrupt/Delay**: Wait for exactly 1 second.
 3. **Update Logic**: Increment seconds, then check for minute/hour carry-over.
 4. **Display**: Refresh the Seven-Segment or LCD output.
 
-## Project Simulation and Visuals
+## Project Schematic
 ![Clock Schematic](digital_clock.png)
 *High-resolution snapshot of the circuit schematic designed in Proteus.*
 
-![Clock Operation Animation](Animation.gif)
-*Real-time simulation showing the clock cycles during operation.*
-
 ## Project Structure
-Based on the project directory, the following files are included:
+Based on the project directory:
 * **main.c**: The core C source code containing the timing logic.
 * **digital_clock.pdsprj**: The Proteus simulation file for hardware verification.
 * **Clock_report[1].pdf**: Detailed technical documentation and circuit analysis.
